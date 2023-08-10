@@ -12,6 +12,7 @@ fastapi = "^0.101.0"
 importlib-metadata = "^6.8.0"
 importlib = "^1.0.4"
 alembic = "^1.11.2"
+sqlalchemy = "^2.0.19"
 
 
 [build-system]

@@ -1,6 +1,6 @@
 from typing import Union
 from fastapi import FastAPI, status
-import version
+from ..lib.version import Version 
 
 
 app = FastAPI()
@@ -9,5 +9,5 @@ app = FastAPI()
 def read_root():
     return {
         "status":status.HTTP_200_OK,
-        "version": version.get_version()
+        "version": Version().current()
     }
