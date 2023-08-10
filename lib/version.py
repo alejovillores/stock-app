@@ -1,5 +1,3 @@
-
-
 class Version:
     MAYOR = 0
     MINOR = 0
