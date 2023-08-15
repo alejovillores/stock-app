@@ -13,6 +13,7 @@ importlib-metadata = "^6.8.0"
 importlib = "^1.0.4"
 alembic = "^1.11.2"
 sqlalchemy = "^2.0.19"
+python-dotenv = "^1.0.0"
 
 
 [build-system]

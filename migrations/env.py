@@ -5,11 +5,15 @@ from sqlalchemy import pool
 
 from alembic import context
 
-from stock_app.stock_app.config.database import db_url
+from config.database import db_url
+from stock_app.models.user import Base
+from config.log import get_logger
 
+logging = get_logger(__name__)
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
 config = context.config
+config.set_main_option('sqlalchemy.url', db_url)
 
 # Interpret the config file for Python logging.
 # This line sets up loggers basically.
@@ -20,7 +24,8 @@ if config.config_file_name is not None:
 # for 'autogenerate' support
 # from myapp import mymodel
 # target_metadata = mymodel.Base.metadata
-target_metadata = None
+logging.info(Base.metadata)
+target_metadata = Base.metadata
 
 # other values from the config, defined by the needs of env.py,
 # can be acquired:
@@ -41,7 +46,7 @@ def run_migrations_offline() -> None:
 
     """
     # NOTE this url must be changed from .env file
-    url = db_url
+    url = None
     context.configure(
         url=url,
         target_metadata=target_metadata,
