@@ -14,6 +14,7 @@ importlib = "^1.0.4"
 alembic = "^1.11.2"
 sqlalchemy = "^2.0.19"
 python-dotenv = "^1.0.0"
+psycopg2 = "^2.9.7"
 
 
 [build-system]

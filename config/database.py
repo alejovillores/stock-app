@@ -21,5 +21,7 @@ try:
     logging.info(f'database url: {db_url}')
     engine = create_engine(db_url, echo=True)
     Session = sessionmaker(bind=engine)
+    logging.info('')
 except:
-    print('error')
+    logging.error('could not create an engine or Session')
+    raise Exception
