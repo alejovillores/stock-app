@@ -22,7 +22,7 @@ jobs:
       - name: Set up Python 3.10
         uses: actions/setup-python@v2
         with:
-          python-version: '3.11'
+          python-version: '3.10'
       # ----------------------------------------------
       #  -----  install & configure poetry  -----
       # ----------------------------------------------
@@ -53,19 +53,29 @@ jobs:
       # ----------------------------------------------
       - name: Install library
         run: poetry install --no-interaction
+    outputs:
+      venv-path: ${{ steps.cached-poetry-dependencies.outputs.cache-hit }}
+
   linter:
     needs: build
     runs-on: ubuntu-latest
     steps:
       # ----------------------------------------------
+      # Wait for build job to complete and get venv path
+      # ----------------------------------------------
+      - name: Wait for build and get venv path
+        id: get-venv-path
+        run: echo "::set-output name=venv-path::${{ needs.build.outputs.venv-path }}"
+
+      # ----------------------------------------------
       #              run flake8 linting
       # ----------------------------------------------
       - name: Run linting with flake8
         run: |
-          source .venv/bin/activate
+          source ${{ steps.get-venv-path.outputs.venv-path }}/bin/activate
           sh .script/linter.sh
   test:
-    needs: [build, linter]
+    needs: [linter]
     runs-on: ubuntu-latest
     steps:
       # ----------------------------------------------
@@ -73,5 +83,5 @@ jobs:
       # ----------------------------------------------
       - name: Run tests
         run: |
-          source .venv/bin/activate
+          source ${{ needs.linter.outputs.venv-path }}/bin/activate
           ENV='test' poetry run pytest
