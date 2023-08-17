@@ -12,7 +12,6 @@ on:
     - "!fix**"
 
 jobs:
-
   build:
     runs-on: ubuntu-latest
     steps:
@@ -65,7 +64,7 @@ jobs:
         sh .script/linter.sh
 
   test:
-    needs: linter
+    needs: [build, linter]
       #----------------------------------------------
       #              run test suite
       #----------------------------------------------
