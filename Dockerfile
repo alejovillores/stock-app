@@ -15,5 +15,12 @@ RUN poetry install --no-dev
 
 EXPOSE 8000
 
+#TODO: FALTA TERMINAR
+
+# 1) correr migrations
+# 2) correr poetry uvicorn...
+
+
+
 
 
