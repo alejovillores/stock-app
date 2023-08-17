@@ -1,5 +1,5 @@
 from fastapi import FastAPI, status
-from ..lib.version import Version
+from lib.version import Version
 
 
 app = FastAPI()
