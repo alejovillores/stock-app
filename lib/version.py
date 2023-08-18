@@ -4,4 +4,8 @@ class Version:
     PATCH = 1
 
     def current(self):
-        return "#{MAYOR}.#{MINOR}.#{PATCH}"
+        return f"{self.MAYOR}.{self.MINOR}.{self.PATCH}"
+
+    def correct_version(self, version):
+        curr = self.current()
+        return version == curr

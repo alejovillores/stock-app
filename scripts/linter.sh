@@ -14,6 +14,3 @@ else
     echo "Fix lint errors!"
     exit 1
 fi
-
-
-
