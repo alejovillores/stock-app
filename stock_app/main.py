@@ -2,15 +2,6 @@ from fastapi import FastAPI, status
 from lib.version import Version
 from config.database import Session
 
-
-async def get_db():
-    db = Session()
-    try:
-        yield db
-    finally:
-        db.close()
-
-
 app = FastAPI()
 
 
