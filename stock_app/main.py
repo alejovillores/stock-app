@@ -1,6 +1,5 @@
 from fastapi import FastAPI, status
 from lib.version import Version
-from config.database import Session
 
 app = FastAPI()
 
