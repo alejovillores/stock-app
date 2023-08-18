@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  #stock-app:
+  #  build: ./Dockerfile
+  #  image: stock-app:latest
+  #  stdin_open: true # docker run -i
+  #  tty: true        # docker run -t
+  #  volumes:
+  #    - .:/app
+  #  ports:
+  #    - "8080:80"
+  #  depends_on:
+  #    - postgres-dev
+  #    - postgres-prod
+
+  postgres-prod:
+    image: postgres
+    environment:
+      POSTGRES_DB: prod_db
+      POSTGRES_USER: prod_user
+      POSTGRES_PASSWORD: prod_password
+    volumes:
+      - postgres-prod-data:/var/lib/postgresql/data
+    ports:
+      - "5433:5432"
+
+volumes:
+  postgres-prod-data:
+
