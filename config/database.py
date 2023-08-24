@@ -11,7 +11,8 @@ TEST_BD_URL = "sqlite:///data/test_app.db"
 logging = get_logger(__name__)
 load_dotenv()
 
-try:
+
+def get_url():
     enviroment = os.getenv('ENV')
     if enviroment == 'development':
         db_url = os.getenv('DEV_BD_URL')
@@ -19,11 +20,17 @@ try:
         db_url = os.getenv('PROD_BD_URL')
     else:
         db_url = TEST_BD_URL
+    return db_url
 
-    logging.info(f'database url: {db_url}')
-    engine = create_engine(db_url, echo=True)
-    Session = sessionmaker(bind=engine)
-    logging.info('engine and session created')
-except:
-    logging.error('could not create an engine or Session')
-    raise Exception
+
+def get_session():
+    try:
+        db_url = get_url()
+        logging.info(f'database url: {db_url}')
+        engine = create_engine(db_url, echo=True)
+        Session = sessionmaker(bind=engine)
+        logging.info('engine and session created')
+        return Session
+    except:
+        logging.error('could not create an engine or Session')
+        raise Exception

@@ -9,6 +9,6 @@ class User(Base):
 
     id = Column("id", Integer, primary_key=True, autoincrement=True)
     name = Column("name", String(255), nullable=False)
-    second_name = Column("last_name", String(255), nullable=False)
+    last_name = Column("last_name", String(255), nullable=False)
     email = Column("email", String(255), nullable=False)
     password = Column("password", String(255), nullable=False)

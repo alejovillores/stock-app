@@ -32,3 +32,6 @@ build-backend = "poetry.core.masonry.api"
 testpaths = [
     "tests"
 ]
+
+[tool.poetry.scripts]
+start = "stock_app.main:app"
