@@ -4,9 +4,8 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
 from config.log import get_logger
+from .constants import TEST_BD_URL, DEV_BD_URL, PROD_BD_URL
 
-
-TEST_BD_URL = "sqlite:///data/test_app.db"
 
 logging = get_logger(__name__)
 load_dotenv()
@@ -15,9 +14,9 @@ load_dotenv()
 def get_url():
     enviroment = os.getenv('ENV')
     if enviroment == 'development':
-        db_url = os.getenv('DEV_BD_URL')
+        db_url = DEV_BD_URL
     elif enviroment == 'production':
-        db_url = os.getenv('PROD_BD_URL')
+        db_url = PROD_BD_URL
     else:
         db_url = TEST_BD_URL
     return db_url

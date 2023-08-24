@@ -11,8 +11,8 @@ app = FastAPI()
 
 
 async def get_db():
-    Session = get_session()
-    db = Session()
+    LocalSession = get_session()
+    db = LocalSession()
     try:
         yield db
     finally:

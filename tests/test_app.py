@@ -7,8 +7,7 @@ from sqlalchemy.pool import StaticPool
 from stock_app.main import app, get_db
 from lib.version import Version
 from stock_app.models.user import User
-
-TEST_BD_URL = "sqlite:///data/test_app.db"
+from config.constants import TEST_BD_URL
 
 engine = create_engine(
     TEST_BD_URL,
@@ -44,7 +43,7 @@ class TestApp:
         assert version.correct_version(version=data['version'])
         assert response.status_code == 200
 
-    def test_when_post_new_user_it_should_return_saved_user(self):
+    def test_when_post_new_user_it_should_return_saved_user_with_id_1(self):
         response = client.post(
             "/users",
             json={
