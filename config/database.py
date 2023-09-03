@@ -4,7 +4,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
 from config.log import get_logger
-from .constants import TEST_BD_URL, DEV_BD_URL, PROD_BD_URL
+from config.constants import TEST_BD_URL, DEV_BD_URL, PROD_BD_URL
 
 
 logging = get_logger(__name__)
@@ -27,9 +27,9 @@ def get_session():
         db_url = get_url()
         logging.info(f'database url: {db_url}')
         engine = create_engine(db_url, echo=True)
-        Session = sessionmaker(bind=engine)
+        LocalSession = sessionmaker(bind=engine)
         logging.info('engine and session created')
-        return Session
+        return LocalSession
     except:
         logging.error('could not create an engine or Session')
         raise Exception
