@@ -34,5 +34,4 @@ async def create_new_user(user: user.UserRequest, db: Session = Depends(get_db))
         user_created = user_service.new_user(user_repository, user)
         return user_created
     except Exception as error:
-        raise HTTPException(
-            status.HTTP_500_INTERNAL_SERVER_ERROR, **error.__dict__)
+        raise HTTPException(status.HTTP_500_INTERNAL_SERVER_ERROR, **error.__dict__)

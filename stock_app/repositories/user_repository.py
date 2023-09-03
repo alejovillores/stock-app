@@ -1,6 +1,9 @@
 from sqlalchemy.orm import Session
 from ..schemas.user import UserRequest
 from ..models.user import User
+from config import log
+
+logging = log.get_logger(__name__)
 
 
 class UserRepository:
@@ -13,16 +16,13 @@ class UserRepository:
         )
 
         if user:
+            logging.info("update user")
             user.name = user_request.name
             user.last_name = user_request.last_name
             user.email = user_request.email
         else:
-            user = User(
-                name=user_request.name,
-                last_name=user_request.last_name,
-                email=user_request.email,
-                password=user_request.password,
-            )
+            logging.info("new user")
+            user = User(**user_request.dict())
             self.connection.add(user)
 
         self.connection.commit()

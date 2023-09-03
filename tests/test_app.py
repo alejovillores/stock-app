@@ -58,3 +58,19 @@ class TestApp:
         assert data["last_name"] == "last_name"
         assert data["email"] == "deadpool@example.com"
         assert data["id"] == 1
+
+    def test_when_post_new_user_it_should_return_saved_user_with_id_2(self):
+        response = client.post(
+            "/users",
+            json={
+                "name": "name2",
+                "last_name": "last_name2",
+                "email": "deadpool2@example.com",
+                "password": "chimichangas4life"},
+        )
+        assert response.status_code == 201, response.text
+        data = response.json()
+        assert data["name"] == "name2"
+        assert data["last_name"] == "last_name2"
+        assert data["email"] == "deadpool2@example.com"
+        assert data["id"] == 2
