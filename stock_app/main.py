@@ -1,8 +1,8 @@
 from fastapi import FastAPI, status, Depends, HTTPException
 from sqlalchemy.orm import Session
 
-from lib.version import Version
-from config.database import get_session
+from .lib.version import Version
+from .config.database import get_session
 from .schemas import user
 from .services.user import UserService
 from .repositories.user_repository import UserRepository

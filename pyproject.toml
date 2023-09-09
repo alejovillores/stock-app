@@ -17,6 +17,7 @@ psycopg2 = "^2.9.7"
 flake8 = "^6.1.0"
 black = "^23.7.0"
 sqlalchemy = "^2.0.20"
+uvicorn = "^0.23.2"
 
 
 [tool.poetry.group.dev.dependencies]

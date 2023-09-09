@@ -1,7 +1,7 @@
 from sqlalchemy.orm import Session
 from ..schemas.user import UserRequest
 from ..models.user import User
-from config import log
+from ..config import log
 
 logging = log.get_logger(__name__)
 

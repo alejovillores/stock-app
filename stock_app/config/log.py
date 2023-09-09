@@ -1,7 +1,7 @@
 import logging
 
-FORMAT = '%(asctime)s - %(levelname)s - %(message)s'
-LEVEL = 'INFO'
+FORMAT = "%(asctime)s - %(levelname)s - %(message)s"
+LEVEL = "INFO"
 
 logging.basicConfig(format=FORMAT, level=LEVEL)
 

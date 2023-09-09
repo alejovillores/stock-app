@@ -5,9 +5,9 @@ from sqlalchemy.orm import sessionmaker
 from sqlalchemy.pool import StaticPool
 
 from stock_app.main import app, get_db
-from lib.version import Version
+from stock_app.lib.version import Version
 from stock_app.models.user import User
-from config.constants import TEST_BD_URL
+from stock_app.config.constants import TEST_BD_URL
 
 engine = create_engine(
     TEST_BD_URL,

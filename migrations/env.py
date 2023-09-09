@@ -5,9 +5,9 @@ from sqlalchemy import pool
 
 from alembic import context
 
-from config.database import get_url
+from stock_app.config.database import get_url
 from stock_app.models.user import Base
-from config.log import get_logger
+from stock_app.config.log import get_logger
 
 logging = get_logger(__name__)
 # this is the Alembic Config object, which provides
